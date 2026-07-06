@@ -1,13 +1,42 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import Login from './Login';
 
 export default function Page() {
+  const [authed, setAuthed] = useState(false);
+  const [checked, setChecked] = useState(false);
   const ran = useRef(false);
+
+  // restore session
   useEffect(() => {
-    if (ran.current) return;
-    ran.current = true;
-    import('../lib/app').then((m) => m.default());
+    try { if (sessionStorage.getItem('pa_auth') === '1') setAuthed(true); } catch (e) {}
+    setChecked(true);
   }, []);
+
+  // mount the app once authenticated
+  useEffect(() => {
+    if (authed && !ran.current) {
+      ran.current = true;
+      import('../lib/app').then((m) => m.default());
+    }
+  }, [authed]);
+
+  function signOut() {
+    try { sessionStorage.removeItem('pa_auth'); } catch (e) {}
+    window.location.reload();
+  }
+
+  if (!checked) return null; // avoid flash before we know auth state
+  if (!authed) {
+    return (
+      <Login
+        onSuccess={() => {
+          try { sessionStorage.setItem('pa_auth', '1'); } catch (e) {}
+          setAuthed(true);
+        }}
+      />
+    );
+  }
 
   return (
     <>
@@ -23,7 +52,10 @@ export default function Page() {
             </div>
           </div>
           <nav className="nav" id="nav"></nav>
-          <div className="side-foot">TFID Portfolio Assessment<br />Workbook v1.0 · Tanoto Foundation</div>
+          <div className="side-foot">
+            TFID Portfolio Assessment<br />Workbook v1.0 · Tanoto Foundation
+            <button className="signout-btn" onClick={signOut}>Sign out</button>
+          </div>
         </aside>
         <div className="main">
           <div className="topbar">
@@ -44,3 +76,4 @@ export default function Page() {
     </>
   );
 }
+
