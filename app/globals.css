@@ -246,3 +246,35 @@ body.only-sheet .summary-sheet{position:absolute;left:0;top:0;width:100%}
 .sync{font-size:11px;font-weight:700;padding:4px 10px;border-radius:20px;background:#eef1f5;color:#5b6472;margin-right:10px;white-space:nowrap}
 .sync.ok{background:#e4eee9;color:#006341}
 .sync.err{background:#fdecea;color:#c0392b}
+/* ---------- Login gate ---------- */
+.login-wrap{display:flex;min-height:100vh;width:100%;font-family:"Century Gothic","Franklin Gothic Medium","Franklin Gothic",Arial,"Helvetica Neue",Helvetica,sans-serif;color:#1a1f2b}
+.login-left{position:relative;flex:0 0 44%;max-width:44%;background:linear-gradient(160deg,#0a6b49 0%,#006341 55%,#00512f 100%);color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;text-align:left;padding:48px 44px}
+.login-left-inner{max-width:420px;display:flex;flex-direction:column;align-items:flex-start}
+.login-logo{width:68px;height:68px;border-radius:15px;display:block;margin:0 0 22px;box-shadow:0 0 0 1px rgba(255,255,255,.22)}
+.login-title{font-size:30px;font-weight:800;letter-spacing:-.4px;margin:0 0 10px}
+.login-sub{font-size:14px;line-height:1.6;color:rgba(255,255,255,.82);margin:0 0 20px}
+.login-tags{display:flex;flex-wrap:wrap;gap:9px}
+.login-tags span{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.18);color:#fff;font-size:12px;font-weight:600;padding:6px 13px;border-radius:20px}
+.login-brand{position:absolute;left:44px;bottom:26px;font-size:11px;letter-spacing:1.5px;font-weight:700;color:#C9BA85}
+.login-right{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 32px;background:#fff}
+.login-form{width:100%;max-width:360px}
+.login-form h2{font-size:26px;font-weight:800;margin:0 0 6px}
+.login-formsub{font-size:14px;color:#5b6472;margin:0 0 26px}
+.login-form label{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;font-weight:700;color:#3a4250;margin:0 0 6px}
+.login-input{width:100%;box-sizing:border-box;border:1px solid #d7dce3;border-radius:10px;padding:12px 14px;font:inherit;font-size:14px;margin-bottom:18px;transition:.12s}
+.login-input:focus{outline:none;border-color:#006341;box-shadow:0 0 0 3px rgba(0,99,65,.12)}
+.login-show{background:none;border:0;color:#006341;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;padding:0}
+.login-btn{width:100%;background:#006341;color:#fff;border:0;border-radius:10px;padding:13px;font:inherit;font-size:15px;font-weight:700;cursor:pointer;transition:.12s;margin-top:2px}
+.login-btn:hover{background:#00784e}
+.login-btn:disabled{opacity:.6;cursor:default}
+.login-err{background:#fdecea;color:#b0281a;border:1px solid #f4c7c0;border-radius:8px;padding:9px 12px;font-size:12.5px;margin-bottom:14px;display:none}
+.login-err.show{display:block}
+.login-help{font-size:12px;color:#8a93a1;text-align:center;line-height:1.6;margin:18px 0 0}
+@media (max-width:860px){
+  .login-wrap{flex-direction:column;min-height:100vh}
+  .login-left{flex:none;max-width:100%;min-height:300px;justify-content:center;align-items:flex-start;padding:34px 30px 56px}
+  .login-brand{left:30px;bottom:22px}
+  .login-right{padding:36px 26px 48px}
+}
+.signout-btn{display:block;margin-top:12px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff;font:inherit;font-size:12px;font-weight:700;padding:7px 12px;border-radius:8px;cursor:pointer;width:100%}
+.signout-btn:hover{background:rgba(255,255,255,.2)}
